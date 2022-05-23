@@ -1,0 +1,54 @@
+Additional Resources
+
+    Troubleshoot and resolve issues using the dig, host, and nslookup commands.
+    Assess the application /root/test_app for a memory leak.
+    Assess and resolve the issue with /root/example_app.
+
+Learning Objectives
+
+0 of 3 completed
+
+Troubleshoot and resolve issues using the `dig`, `host`, and `nslookup` commands.
+
+Attempt to use dig to look up an IP for linuxacademy.com:
+dig linuxacademy.com
+
+Use ldd to view the libraries used by dig:
+ldd $(which dig)
+
+libdns.so.1102 is missing. Use yum to find a package that installs this library:
+yum provides */libdns.so.1102
+
+Reinstall the bind-libs-lite package:
+yum reinstall -y bind-libs-lite
+
+Attempt to use dig to look up an IP for linuxacademy.com:
+dig linuxacademy.com
+
+Assess the application /root/memleak_test_app for a memory leak.
+
+Install valgrind:
+yum install -y valgrind
+
+Run valgrind against /root/test_app:
+valgrind ./memleak_test_app
+
+If the app has a memory leak, remove executable permissions:
+chmod -x /root/memleak_test_app
+
+Assess and resolve the issue with /root/example_app.
+
+Attempt to run the application:
+/root/example_app
+
+Install strace:
+yum install -y strace
+
+Run the application again using strace:
+strace /root/example_app
+
+Create the missing file:
+touch /etc/example.conf
+
+Run the application again:
+/root/example_app
